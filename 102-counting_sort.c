@@ -23,6 +23,13 @@ void counting_sort(int *array, size_t size)
     if (i == (int)size)
         return;
 
+	max = array[0];
+	for (i = 1; i < (int)size; i++)
+	{
+		if (array[i] > max)
+			max = array[i];
+	}
+
 	count = malloc(sizeof(int) * (max + 1));
 	if (count == NULL)
 		return;
