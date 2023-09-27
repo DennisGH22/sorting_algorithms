@@ -61,13 +61,12 @@ void bitonic_sort_recursive(int *array, size_t size, int dir, size_t bitonic_siz
 */
 void bitonic_sort(int *array, size_t size)
 {
-	int i, temp;
-
 	if (array == NULL || size <= 1 || (size & (size - 1)) != 0)
 		return;
 
 	if (array[0] > array[size - 1])
 	{
+		int i, temp;
 		for (i = 0; i < size / 2; i++)
 		{
 			temp = array[i];
