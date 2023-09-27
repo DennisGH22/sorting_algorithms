@@ -9,12 +9,12 @@
 void counting_sort(int *array, size_t size)
 {
     size_t i;
-    int j, *count, *output; 
+    int j,  max, *count, *output; 
 
 	if (array == NULL || size < 2)
 		return;
 
-	int max = array[0];
+	max = array[0];
 	for (i = 1; i < size; i++)
 	{
 		if (array[i] > max)
