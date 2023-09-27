@@ -2,6 +2,7 @@
 
 /**
  * swap - Swap two integers.
+ *
  * @x: Pointer to the first integer.
  * @y: Pointer to the second integer.
 */
@@ -13,7 +14,8 @@ void swap(int *x, int *y)
 }
 
 /**
- * bubble_sort - Sort an array of integers in ascending order using Bubble Sort.
+ * bubble_sort - Sort an array of integers in ascending order.
+ *
  * @array: Pointer to the array to be sorted.
  * @size: Size of the array.
 */
