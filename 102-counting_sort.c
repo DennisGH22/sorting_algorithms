@@ -8,9 +8,9 @@
 */
 void counting_sort(int *array, size_t size)
 {
-    int i, max, *output, *count;
+	int i, max, *output, *count;
 
-    if (array == NULL || size < 2)
+	if (array == NULL || size <= 1)
 		return;
 
 	output = malloc(size * sizeof(int));
