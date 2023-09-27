@@ -61,19 +61,14 @@ void bitonic_sort_recursive(int *array, size_t size, int dir, size_t bitonic_siz
 */
 void bitonic_sort(int *array, size_t size)
 {
-	if (array == NULL || size <= 1 || (size & (size - 1)) != 0)
+	size_t bitonic_size;
+
+	if (array == NULL || size <= 1)
 		return;
 
-	if (array[0] > array[size - 1])
-	{
-		int i, temp;
-		for (i = 0; i < size / 2; i++)
-		{
-			temp = array[i];
-			array[i] = array[size - i - 1];
-			array[size - i - 1] = temp;
-		}
-	}
+	bitonic_size = 1;
+    while (bitonic_size < size)
+        bitonic_size *= 2;
 
-	bitonic_sort_recursive(array, size, 1, size);
+    bitonic_sort_recursive(array, size, 1, 0, bitonic_size);
 }
