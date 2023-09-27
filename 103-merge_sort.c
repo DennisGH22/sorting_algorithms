@@ -55,7 +55,7 @@ void merge(int *array, int *left, int *right, size_t size)
 void merge_sort(int *array, size_t size)
 {
     size_t middle;
-    int *left, *right
+    int *left, *right;
 
     if (array == NULL || size <= 1)
         return;
