@@ -26,7 +26,7 @@ void swap(int *x, int *y)
 int lomuto_partition(int *array, int low, int high, size_t size)
 {
 	int pivot = array[high];
-	int i, j = low - 1;
+	int i = low - 1, j;
 	size_t k;
 
 	for (j = low; j <= high - 1; j++)
@@ -58,7 +58,7 @@ int lomuto_partition(int *array, int low, int high, size_t size)
 }
 
 /**
- * quick_sort_recursive - Recursive function to perform quick sort.
+ * quick_sort_recursive - Performs quick sort.
  *
  * @array: Pointer to the array to be sorted.
  * @low: Index of the low end of the partition.
