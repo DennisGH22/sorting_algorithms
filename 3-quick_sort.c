@@ -27,6 +27,7 @@ int lomuto_partition(int *array, int low, int high, size_t size)
 {
 	int pivot = array[high];
 	int i = low - 1;
+	size_t k;
 
 	for (int j = low; j <= high - 1; j++)
 	{
@@ -35,7 +36,7 @@ int lomuto_partition(int *array, int low, int high, size_t size)
 			i++;
 			swap(&array[i], &array[j]);
 
-			for (size_t k = 0; k < size; k++)
+			for (k = 0; k < size; k++)
 			{
 				printf("%d", array[k]);
 				if (k < size - 1)
@@ -46,7 +47,7 @@ int lomuto_partition(int *array, int low, int high, size_t size)
 	}
 	swap(&array[i + 1], &array[high]);
 
-	for (size_t k = 0; k < size; k++)
+	for (k = 0; k < size; k++)
 	{
 		printf("%d", array[k]);
 		if (k < size - 1)
@@ -66,9 +67,11 @@ int lomuto_partition(int *array, int low, int high, size_t size)
 */
 void quick_sort_recursive(int *array, int low, int high, size_t size)
 {
+	int pivot_index;
+
 	if (low < high)
 	{
-		int pivot_index = lomuto_partition(array, low, high, size);
+		pivot_index = lomuto_partition(array, low, high, size);
 
 		quick_sort_recursive(array, low, pivot_index - 1, size);
 		quick_sort_recursive(array, pivot_index + 1, high, size);
