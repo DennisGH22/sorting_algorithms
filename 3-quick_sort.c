@@ -14,25 +14,6 @@ void swap(int *x, int *y)
 }
 
 /**
- * print_array - Print an array of integers.
- *
- * @array: The array to print.
- * @size: The size of the array.
-*/
-void print_array(int *array, size_t size)
-{
-	size_t i;
-
-    for (i = 0; i < size; i++)
-	{
-        printf("%d", array[i]);
-        if (i < size - 1)
-            printf(", ");
-    }
-    printf("\n");
-}
-
-/**
  * lomuto_partition - Partition the array using the Lomuto scheme.
  *
  * @array: Pointer to the array to be partitioned.
@@ -42,7 +23,7 @@ void print_array(int *array, size_t size)
  *
  * Return: Index of the pivot element.
 */
-int lomuto_partition(int *array, int low, int high, size_t size)
+int lomuto_partition(int *array, size_t size, int low, int high)
 {
 	int *pivot = array + high;
 	int i = low - 1, j;
