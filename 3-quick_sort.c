@@ -23,18 +23,18 @@ void swap(int *x, int *y)
  *
  * Return: Index of the pivot element.
 */
-int lomuto_partition(int *array, size_t size, int low, int high)
+int lomuto_partition(int *array, int low, int high, size_t size)
 {
 	int *pivot = array + high;
-	int i = low - 1, j;
+	int i, j;
 
-	for (j = i = low; j < high; j++)
+	for (i = j = low; j < high; j++)
 	{
 		if (array[j] < *pivot)
 		{
 			if (i < j)
 			{
-				swap(array + i, array + j);
+				swap(array + j, array + i);
 				print_array(array, size);
 			}
 			i++;
@@ -46,9 +46,6 @@ int lomuto_partition(int *array, size_t size, int low, int high)
 		swap(array + i, pivot);
 		print_array(array, size);
 	}
-	
-	swap(array + i + 1, pivot);
-	print_array(array, size);
 
 	return (i);
 }
