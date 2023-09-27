@@ -10,8 +10,11 @@ void counting_sort(int *array, size_t size)
 {
     int i, max, *output, *count;
 
+    if (array == NULL || size < 2)
+		return;
+
 	output = malloc(size * sizeof(int));
-	if (!array)
+	if (array == NULL)
 	{
 		free(output);
 		return;
@@ -28,7 +31,7 @@ void counting_sort(int *array, size_t size)
 	for (i = 0; i <= max; ++i)
 		count[i] = 0;
 
-	if (!count)
+	if (count == NULL)
 	{
 		free(count);
 		return;
