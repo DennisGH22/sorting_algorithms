@@ -21,6 +21,7 @@ void bubble_sort(int *array, size_t size)
 {
 	size_t i, j;
 	int swapped;
+	size_t k;
 
 	for (i = 0; i < size - 1; i++)
 	{
@@ -32,7 +33,7 @@ void bubble_sort(int *array, size_t size)
 				swap(&array[j], &array[j + 1]);
 				swapped = 1;
 
-				for (size_t k = 0; k < size; k++)
+				for (k = 0; k < size; k++)
 				{
 					printf("%d", array[k]);
 					if (k < size - 1)
