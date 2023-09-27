@@ -7,27 +7,26 @@
  * @a: Pointer to the first node to swap.
  * @b: Pointer to the second node to swap.
 */
-void swap_nodes(listint_t **list, listint_t **a, listint_t **b)
+void swap_nodes(listint_t **list, listint_t *node)
 {
-	listint_t *prev_a, *next_a, *prev_b, *next_b;
+	listint_t *prev = node->prev;
+    listint_t *next = node->next;
 
-	prev_a = (*a)->prev;
-	next_a = (*a)->next;
-	prev_b = (*b)->prev;
-	next_b = (*b)->next;
+    if (prev)
+        prev->next = next;
+    else
+        *list = next;
+    
+    if (next)
+        next->prev = prev;
 
-	if (prev_a)
-		prev_a->next = *b;
-	else
-		*list = *b;
+    node->prev = next;
+    node->next = next ? next->next : NULL;
 
-	if (next_b)
-		next_b->prev = *a;
-
-	(*a)->prev = prev_b;
-	(*a)->next = next_b;
-	(*b)->prev = prev_a;
-	(*b)->next = *a;
+    if (next)
+        next->next = node;
+    if (node->next)
+        node->next->prev = node;
 }
 
 /**
@@ -53,7 +52,7 @@ void cocktail_sort_list(listint_t **list)
 		{
 			if (current->n > current->next->n)
 			{
-				swap_nodes(list, &current, &current->next);
+				swap_nodes(list, current);
 				swapped = 1;
 				print_list(*list);
 			}
@@ -72,7 +71,7 @@ void cocktail_sort_list(listint_t **list)
 		{
 			if (current->n < current->prev->n)
 			{
-				swap_nodes(list, &current->prev, &current);
+				swap_nodes(list, &current->prev);
 				swapped = 1;
 				print_list(*list);
 			}
