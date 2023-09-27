@@ -80,5 +80,5 @@ void bitonic_sort(int *array, size_t size)
 	printf("Merging [%zu/%zu] (UP):\n", size);
 	print_array(array, size);
 
-	bitonic_sort_recursive(array, size, 1, 0);
+	bitonic_sort_recursive(array, size, 1, 0, bitonic_size);
 }
