@@ -4,8 +4,7 @@
  * swap_nodes - Swaps two nodes in a doubly linked list.
  *
  * @list: Pointer to the head of the linked list.
- * @a: Pointer to the first node to swap.
- * @b: Pointer to the second node to swap.
+ * @node: node to swap.
 */
 void swap_nodes(listint_t **list, listint_t *node)
 {
