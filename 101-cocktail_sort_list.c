@@ -10,23 +10,23 @@
 void swap_nodes(listint_t **list, listint_t *node)
 {
 	listint_t *prev = node->prev;
-    listint_t *next = node->next;
+	listint_t *next = node->next;
 
-    if (prev)
-        prev->next = next;
-    else
-        *list = next;
-    
-    if (next)
-        next->prev = prev;
+	if (prev)
+		prev->next = next;
+	else
+		*list = next;
 
-    node->prev = next;
-    node->next = next ? next->next : NULL;
+	if (next)
+		next->prev = prev;
 
-    if (next)
-        next->next = node;
-    if (node->next)
-        node->next->prev = node;
+	node->prev = next;
+	node->next = next ? next->next : NULL;
+
+	if (next)
+		next->next = node;
+	if (node->next)
+		node->next->prev = node;
 }
 
 /**
