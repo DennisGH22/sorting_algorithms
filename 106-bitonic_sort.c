@@ -74,15 +74,8 @@ void bitonic_sort_recursive(int *array, size_t size, int dir, size_t start, size
 */
 void bitonic_sort(int *array, size_t size)
 {
-	size_t bitonic_size;
-
 	if (array == NULL || size <= 1)
 		return;
-
-	bitonic_size = 1;
-
-	while (bitonic_size < size)
-		bitonic_size *= 2;
 
 	printf("Merging [%zu/%zu] (UP):\n", bitonic_size, size);
 	print_array(array, size);
