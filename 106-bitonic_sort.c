@@ -6,11 +6,11 @@
  * @a: Pointer to the first element.
  * @b: Pointer to the second element.
 */
-void swap(int *a, int *b)
+void swap(int *x, int *y)
 {
-	int temp = *a;
-	*a = *b;
-	*b = temp;
+	int temp = *x;
+	*x = *y;
+	*y = temp;
 }
 
 /**
