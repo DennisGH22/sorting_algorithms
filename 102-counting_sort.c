@@ -8,53 +8,45 @@
 */
 void counting_sort(int *array, size_t size)
 {
-    int i, min, max, 
-    range, *output, *count;
+    size_t i;
+    int j, *count, *output; 
 
-    if (array == NULL || size < 2)
-        return;
+	if (array == NULL || size < 2)
+		return;
 
-    max = array[0];
-    min = array[0];
-    for (j = 1; j < size; j++)
-    {
-        if (array[j] > max)
-            max = array[j];
-        if (array[j] < min)
-            min = array[j];
-    }
+	int max = array[0];
+	for (i = 1; i < size; i++)
+	{
+		if (array[i] > max)
+			max = array[i];
+	}
 
-    range = max - min + 1;
+	count = calloc(max + 1, sizeof(int));
+	if (count == NULL)
+		return;
 
-    count = malloc(range * sizeof(int));
-    if (count == NULL)
-        return;
+	for (i = 0; i < size; i++)
+		count[array[i]]++;
 
-    for (i = 0; i < range; i++)
-        count[i] = 0;
+	for (j = 1; j <= max; j++)
+		count[j] += count[j - 1];
 
-    for (j = 0; j < size; j++)
-        count[array[j] - min]++;
+	output = malloc(sizeof(int) * size);
+	if (output == NULL)
+	{
+		free(count);
+		return;
+	}
 
-    for (i = 1; i < range; i++)
-        count[i] += count[i - 1];
+	for (j = (int)size - 1; j >= 0; j--)
+	{
+		output[count[array[j]] - 1] = array[j];
+		count[array[j]]--;
+	}
 
-    output = malloc(size * sizeof(int));
-    if (output == NULL)
-    {
-        free(count);
-        return;
-    }
+	for (i = 0; i < size; i++)
+		array[i] = output[i];
 
-    for (i = (int)size - 1; i >= 0; i--)
-    {
-        output[count[array[i]] - min] - 1 = array[i];
-        count[array[i] - min]--;
-    }
-
-    for (j = 0; j < size; j++)
-        array[j] = output[j];
-
-    free(count);
-    free(output);
+	free(count);
+	free(output);
 }
