@@ -25,7 +25,7 @@ void swap(int *x, int *y)
 */
 int hoare_partition(int *array, int low, int high, size_t size)
 {
-	int pivot = array[high];
+	int pivot = array[low];
 	int i = low - 1;
 	int j = high + 1;
 
@@ -65,7 +65,7 @@ void quicksort_hoare_recursive(int *array, int low, int high, size_t size)
 	{
 		pivot_idx = hoare_partition(array, low, high, size);
 
-		quicksort_hoare_recursive(array, low, pivot_idx - 1, size);
+		quicksort_hoare_recursive(array, low, pivot_idx, size);
 		quicksort_hoare_recursive(array, pivot_idx + 1, high, size);
 	}
 }
