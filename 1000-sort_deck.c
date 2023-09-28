@@ -74,6 +74,7 @@ void sort_deck(deck_node_t **deck)
 			&& card_comp(current->prev->card) > card_comp(current->card))
 		{
 			swap_cards(current->prev, current);
+
 			if (!current->prev)
 				*deck = current;
 		}
