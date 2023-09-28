@@ -62,7 +62,7 @@ void quicksort_hoare_recursive(int *array, int low, int high, size_t size)
 {
 	int pivot_idx;
 
-    if (0 < high - low)
+    if (low < high)
 	{
         pivot_idx = hoare_partition(array, low, high, size);
 
