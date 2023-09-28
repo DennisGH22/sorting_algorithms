@@ -1,49 +1,76 @@
 #include "deck.h"
+#include <stdio.h>
+#include <string.h>
 
 /**
- * cardcmp - Comparison function for qsort.
+ * card_comp - Get the integer value of a card.
  *
- * @card1: Pointer to the first card.
- * @card2: Pointer to the second card.
- * Return: Negative value if card1 < card2,
- * 0 if card1 == card2, positive if card1 > card2.
+ * @card: Pointer to the card.
+ * Return: Integer value of the card.
 */
-int cardcmp(const void *card1, const void *card2)
+int card_comp(const card_t *card)
 {
-    const card_t *c1 = *((const card_t **)card1);
-    const card_t *c2 = *((const card_t **)card2);
+    int value;
 
-    if (c1->kind < c2->kind)
-        return -1;
-    else if (c1->kind > c2->kind)
-        return 1;
+    if (strcmp(card->value, "Ace") == 0)
+        value = 1;
+    else if (strcmp(card->value, "10") == 0)
+        value = 10;
+    else if (strcmp(card->value, "Jack") == 0)
+        value = 11;
+    else if (strcmp(card->value, "Queen") == 0)
+        value = 12;
+    else if (strcmp(card->value, "King") == 0)
+        value = 13;
+    else
+        value = atoi(card->value);
 
-    return strcmp(c1->value, c2->value);
+    return value + card->kind * 13;
 }
 
 /**
- * sort_deck - Sorts a deck of cards.
+ * swap_cards - Swap two cards in the deck.
+ *
+ * @a: Pointer to the first card.
+ * @b: Pointer to the second card.
+*/
+void swap_cards(deck_node_t *a, deck_node_t *b)
+{
+    deck_node_t *prev_a = a->prev;
+    deck_node_t *next_b = b->next;
+
+    if (prev_a)
+        prev_a->next = b;
+    b->prev = prev_a;
+
+    a->next = next_b;
+    if (next_b)
+        next_b->prev = a;
+
+    a->prev = b;
+    b->next = a;
+}
+
+/**
+ * sort_deck - Sort a deck of cards.
  *
  * @deck: Pointer to the head of the deck.
 */
 void sort_deck(deck_node_t **deck)
 {
-    int i;
-    deck_node_t *node = *deck;
-    const card_t *cards[52];
+    if (!deck || !(*deck) || !((*deck)->next))
+        return;
 
-    for (i = 0; i < 52 && node != NULL; i++)
+    deck_node_t *current = (*deck)->next;
+    while (current)
     {
-        cards[i] = node->card;
-        node = node->next;
-    }
-
-    qsort(cards, i, sizeof(card_t *), cardcmp);
-
-    node = *deck;
-    for (i = 0; i < 52 && node != NULL; i++)
-    {
-        node->card = cards[i];
-        node = node->next;
+        deck_node_t *next = current->next;
+        while (current->prev && get_card_value(current->prev->card) > get_card_value(current->card))
+        {
+            swap_cards(current->prev, current);
+            if (!current->prev)
+                *deck = current;
+        }
+        current = next;
     }
 }

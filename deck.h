@@ -2,7 +2,7 @@
 #define DECK_H
 
 #include <stdio.h>
-#include <stdlib.h>
+#include <string.h>
 
 typedef enum kind_e
 {
@@ -39,7 +39,8 @@ typedef struct deck_node_s
 	struct deck_node_s *next;
 } deck_node_t;
 
-int cardcmp(const void *card1, const void *card2);
+int card_comp(const card_t *card);
+void swap_cards(deck_node_t *a, deck_node_t *b);
 void sort_deck(deck_node_t **deck);
 
 #endif
