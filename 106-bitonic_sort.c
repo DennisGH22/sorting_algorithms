@@ -73,7 +73,7 @@ void bitonic_sort_recursive(int array[], int start, int count, int dir, int tota
     bitonic_sort_recursive(array, start + half, half, 0, total_size);
     bitonic_merge(array, start, count, dir);
 
-    if (dir == NULL)
+    if (!dir)
         printf("Result [%i/%i] (DOWN):\n", count, total_size);
     else
         printf("Result [%i/%i] (UP):\n", count, total_size);
