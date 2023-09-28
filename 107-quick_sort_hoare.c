@@ -14,7 +14,7 @@ void swap(int *x, int *y)
 }
 
 /**
- * hoare_partition - Partitions an array using the Hoare scheme.
+ * hoare_partition - Partitions an array.
  *
  * @array: The array to be sorted.
  * @low: The low index of the partition.
