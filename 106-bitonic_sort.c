@@ -11,9 +11,9 @@
 void swap_array(int array[], int x, int y, int dir)
 {
 	int diff = array[x] - array[y];
-    int temp;
+	int temp;
 
-    if ((dir && diff > 0) || (!dir && diff < 0))
+	if ((dir && diff > 0) || (!dir && diff < 0))
 	{
 		temp = array[x];
 		array[x] = array[y];
@@ -33,15 +33,15 @@ void bitonic_merge(int array[], int start, int count, int dir)
 {
 	int i, half;
 
-    if (count <= 1)
-        return;
+	if (count <= 1)
+		return;
 
-    half = count / 2;
-    for (i = start; i < start + half; i++)
-        swap_array(array, i, i + half, dir);
+	half = count / 2;
+	for (i = start; i < start + half; i++)
+		swap_array(array, i, i + half, dir);
 
-    bitonic_merge(array, start, half, dir);
-    bitonic_merge(array, start + half, half, dir);
+	bitonic_merge(array, start, half, dir);
+	bitonic_merge(array, start + half, half, dir);
 }
 
 /**
@@ -57,28 +57,28 @@ void bitonic_sort_recursive(int array[], int start, int count, int dir, int tota
 {
 	int half;
 
-    if (count <= 1)
-        return;
+	if (count <= 1)
+		return;
 
-    half = count / 2;
+	half = count / 2;
 
-    if (dir)
-        printf("Merging [%i/%i] (UP):\n", count, total_size);
-    else
-        printf("Merging [%i/%i] (DOWN):\n", count, total_size);
+	if (dir)
+		printf("Merging [%i/%i] (UP):\n", count, total_size);
+	else
+		printf("Merging [%i/%i] (DOWN):\n", count, total_size);
 
-    print_array(&array[start], count);
+	print_array(&array[start], count);
 
-    bitonic_sort_recursive(array, start, half, 1, total_size);
-    bitonic_sort_recursive(array, start + half, half, 0, total_size);
-    bitonic_merge(array, start, count, dir);
+	bitonic_sort_recursive(array, start, half, 1, total_size);
+	bitonic_sort_recursive(array, start + half, half, 0, total_size);
+	bitonic_merge(array, start, count, dir);
 
-    if (!dir)
-        printf("Result [%i/%i] (DOWN):\n", count, total_size);
-    else
-        printf("Result [%i/%i] (UP):\n", count, total_size);
+	if (!dir)
+		printf("Result [%i/%i] (DOWN):\n", count, total_size);
+	else
+		printf("Result [%i/%i] (UP):\n", count, total_size);
 
-    print_array(&array[start], count);
+	print_array(&array[start], count);
 }
 
 /**
@@ -86,13 +86,13 @@ void bitonic_sort_recursive(int array[], int start, int count, int dir, int tota
  *
  * @array: The array to be sorted.
  * @size: The size of the array.
- */
+*/
 void bitonic_sort(int *array, size_t size)
 {
-    int dir = 1;
+	int dir = 1;
 
-    if (array == NULL || size <= 1)
-        return;
+	if (array == NULL || size <= 1)
+		return;
 
-    bitonic_sort_recursive(array, 0, size, dir, size);
+	bitonic_sort_recursive(array, 0, size, dir, size);
 }
