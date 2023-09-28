@@ -41,15 +41,13 @@ int hoare_partition(int *array, int low, int high, size_t size)
             j--;
         } while (array[j] > pivot);
 
-        if (i < j)
+        if (i >= j)
 		{
-            swap(&array[i], &array[j]);
-            print_array(array, size);
+            return (j);
         }
-		else
-		{
-			return (j);
-		}
+		
+		swap(&array[i], &array[j]);
+		print_array(array, size);
     }
 }
 
@@ -69,11 +67,8 @@ void quicksort_hoare_recursive(int *array, int low, int high, size_t size)
 	{
         pivot_idx = hoare_partition(array, low, high, size);
 
-		if (pivot_idx > low)
-        	quicksort_hoare_recursive(array, low, pivot_idx, size);
-
-		if (pivot_idx < high)
-        	quicksort_hoare_recursive(array, pivot_idx + 1, high, size);
+        quicksort_hoare_recursive(array, low, pivot_idx - 1, size);
+        quicksort_hoare_recursive(array, pivot_idx + 1, high, size);
     }
 }
 
@@ -89,5 +84,4 @@ void quick_sort_hoare(int *array, size_t size)
         return;
 
     quicksort_hoare_recursive(array, 0, size - 1, size);
-    print_array(array, size);
 }
