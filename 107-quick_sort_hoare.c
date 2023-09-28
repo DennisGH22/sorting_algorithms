@@ -17,7 +17,7 @@ void swap_positions(int *array, ssize_t x, ssize_t y)
 }
 
 /**
- * hoare_partition - Implements the Hoare partition scheme for quicksort.
+ * hoare_partition - Implements the Hoare partition scheme.
  *
  * @array: The array to be sorted.
  * @low: The low index of the partition.
@@ -53,14 +53,15 @@ int hoare_partition(int *array, int low, int high, int size)
 }
 
 /**
- * quicksort_hoare_recursive - Recursive Quick Sort algorithm using Hoare partitioning.
+ * quicksort_hoare_recursive - Recursive Quick Sort algorithm.
  *
  * @array: The array to be sorted.
  * @low: The low index of the partition.
  * @high: The high index of the partition.
  * @size: The size of the array.
 */
-void quicksort_hoare_recursive(int *array, ssize_t low, ssize_t high, int size)
+void quicksort_hoare_recursive(
+	int *array, ssize_t low, ssize_t high, int size)
 {
 	ssize_t pivot_index = 0;
 
@@ -73,7 +74,7 @@ void quicksort_hoare_recursive(int *array, ssize_t low, ssize_t high, int size)
 }
 
 /**
- * quick_sort_hoare - Sorts an integer array in ascending order using Quick Sort.
+ * quick_sort_hoare - Sorts an integer array in ascending order.
  *
  * @array: The array to be sorted.
  * @size: The size of the array.
