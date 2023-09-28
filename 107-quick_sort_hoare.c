@@ -88,6 +88,6 @@ void quick_sort_hoare(int *array, size_t size)
     if (!array || size <= 1)
         return;
 
-    print_array(array, size);
     quicksort_hoare_recursive(array, 0, size - 1, size);
+    print_array(array, size);
 }
