@@ -39,6 +39,7 @@ void heap_sort(int *array, size_t size);
 void counting_sort_radix(int *array, size_t size, int exp);
 int get_max(int *array, size_t size);
 void radix_sort(int *array, size_t size);
+void swap_array(int arr[], int x, int y);
 void bitonic_merge(int *array, size_t size, int dir, size_t bitonic_size);
 void bitonic_sort_recursive(int *array, size_t size, int dir, size_t bitonic_size);
 void bitonic_sort(int *array, size_t size);
