@@ -2,7 +2,9 @@
 
 /**
  * card_comp - Comparison function for qsort.
+ *
  * @card: Pointer to the card.
+ *
  * Return: Integer value of the card.
 */
 int card_comp(const card_t *card)
@@ -27,6 +29,7 @@ int card_comp(const card_t *card)
 
 /**
  * swap_cards - Swap two cards in the deck.
+ *
  * @a: Pointer to the first card.
  * @b: Pointer to the second card.
 */
@@ -49,6 +52,7 @@ void swap_cards(deck_node_t *a, deck_node_t *b)
 
 /**
  * sort_deck - Sort a deck of cards.
+ *
  * @deck: Pointer to the head of the deck.
 */
 void sort_deck(deck_node_t **deck)
