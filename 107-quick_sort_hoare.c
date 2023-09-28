@@ -48,7 +48,7 @@ int median_of_three(int *array, int low, int high)
  *
  * Return: Index of the pivot element.
 */
-int hoare_partition(int *array, int low, int high, size_t size)
+int hoare_partition(int *array, int low, int high)
 {
     int pivot = median_of_three(array, low, high);
     int i = low - 1;
@@ -82,16 +82,16 @@ int hoare_partition(int *array, int low, int high, size_t size)
  * @high: The high index of the partition.
  * @size: The size of the array.
 */
-void quicksort_hoare_recursive(int *array, int low, int high, size_t size)
+void quicksort_hoare_recursive(int *array, int low, int high)
 {
 	int pivot_idx;
 
     if (low < high)
 	{
-        pivot_idx = hoare_partition(array, low, high, size);
+        pivot_idx = hoare_partition(array, low, high);
 
-        quicksort_hoare_recursive(array, low, pivot_idx, size);
-        quicksort_hoare_recursive(array, pivot_idx + 1, high, size);
+        quicksort_hoare_recursive(array, low, pivot_idx);
+        quicksort_hoare_recursive(array, pivot_idx + 1, high);
     }
 }
 
@@ -106,5 +106,5 @@ void quick_sort_hoare(int *array, size_t size)
     if (!array || size <= 1)
         return;
 
-    quicksort_hoare_recursive(array, 0, size - 1, size);
+    quicksort_hoare_recursive(array, 0, size - 1);
 }
