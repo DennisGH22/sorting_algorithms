@@ -39,4 +39,7 @@ typedef struct deck_node_s
 	struct deck_node_s *next;
 } deck_node_t;
 
+int cardcmp(const void *card1, const void *card2);
+void sort_deck(deck_node_t **deck);
+
 #endif
