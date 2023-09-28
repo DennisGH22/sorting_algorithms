@@ -9,7 +9,7 @@
 */
 int card_comp(const card_t *card)
 {
-	int value;
+	int value, result;
 
 	if (strcmp(card->value, "Ace") == 0)
 		value = 1;
@@ -24,7 +24,9 @@ int card_comp(const card_t *card)
 	else
 		value = atoi(card->value);
 
-	return (value + card->kind * 13);
+	result = value + card->kind * 13;
+
+	return (result);
 }
 
 /**
