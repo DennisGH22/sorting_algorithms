@@ -6,8 +6,8 @@
  * @array: The array containing the values to swap.
  * @x: Index of the first item to swap.
  * @y: Index of the second item to swap.
- * @dir: 1 for ascending order, 0 for descending order.
- */
+ * @dir: Sorting direction (1 for ascending, 0 for descending).
+*/
 void swap_array(int array[], int x, int y, int dir)
 {
     int temp;
@@ -21,13 +21,13 @@ void swap_array(int array[], int x, int y, int dir)
 }
 
 /**
- * bitonic_merge - Merge two bitonic sequences recursively in both orders.
+ * bitonic_merge - Merge two subarrays in bitonic order.
  *
  * @array: The array to be sorted.
  * @start: The starting index of the sequence.
  * @count: Number of elements in the sequence.
- * @dir: 1 for dir order, 0 for descending order.
- */
+ * @dir: Sorting direction (1 for ascending, 0 for descending).
+*/
 void bitonic_merge(int array[], int start, int count, int dir)
 {
 	int i, half;
@@ -39,8 +39,8 @@ void bitonic_merge(int array[], int start, int count, int dir)
     for (i = start; i < start + half; i++)
         swap_array(array, i, i + half, dir);
 
-    merge(array, start, half, dir);
-    merge(array, start + half, half, dir);
+    bitonic_merge(array, start, half, dir);
+    bitonic_merge(array, start + half, half, dir);
 }
 
 /**
@@ -49,9 +49,9 @@ void bitonic_merge(int array[], int start, int count, int dir)
  * @array: The array to be sorted.
  * @start: The starting index of the sequence.
  * @count: Number of elements in the sequence.
- * @dir: 1 for dir order, 0 for descending order.
+ * @dir: Sorting direction (1 for ascending, 0 for descending).
  * @total_size: The total size of the array.
- */
+*/
 void bitonic_sort_recursive(int array[], int start, int count, int dir, int total_size)
 {
 	int half;
@@ -70,7 +70,7 @@ void bitonic_sort_recursive(int array[], int start, int count, int dir, int tota
 
     bitonic_sort_recursive(array, start, half, 1, total_size);
     bitonic_sort_recursive(array, start + half, half, 0, total_size);
-    merge(array, start, count, dir);
+    bitonic_merge(array, start, count, dir);
 
     if (dir == NULL)
         printf("Result [%i/%i] (DOWN):\n", count, total_size);
