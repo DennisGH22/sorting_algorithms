@@ -7,12 +7,12 @@
  * @x: Index of the first item to swap.
  * @y: Index of the second item to swap.
 */
-/*void swap_array(int array[], int x, int y)
+void swap_array(int array[], int x, int y)
 {
     int temp = array[x];
     array[x] = array[y];
     array[y] = temp;
-}/*
+}
 
 /**
  * bitonic_merge - Merge two subarrays in bitonic order.
@@ -32,9 +32,9 @@ void bitonic_merge(int *array, size_t size, int dir, size_t bitonic_size)
         half = bitonic_size / 2;
 
         if (dir == 1)
-            printf("Merging [%zu/%zu] (UP):\n", bitonic_size, size);
+            printf("Merging [%i/%i] (UP):\n", bitonic_size, size);
         else
-            printf("Merging [%zu/%zu] (DOWN):\n", bitonic_size, size);
+            printf("Merging [%i/%i] (DOWN):\n", bitonic_size, size);
 
         print_array(array, bitonic_size);
 
@@ -42,9 +42,7 @@ void bitonic_merge(int *array, size_t size, int dir, size_t bitonic_size)
         {
             if ((array[i] > array[i + half]) == dir)
             {
-                temp = array[i];
-                array[i] = array[i + half];
-                array[i + half] = temp;
+                swap_array(array, i, i + half);
             }
         }
 
@@ -52,9 +50,9 @@ void bitonic_merge(int *array, size_t size, int dir, size_t bitonic_size)
         bitonic_merge(array + half, half, dir, bitonic_size / 2);
 
         if (dir == 0)
-            printf("Result [%zu/%zu] (DOWN):\n", bitonic_size, size);
+            printf("Result [%i/%i] (DOWN):\n", bitonic_size, size);
         else
-            printf("Result [%zu/%zu] (UP):\n", bitonic_size, size);
+            printf("Result [%i/%i] (UP):\n", bitonic_size, size);
 
         print_array(array, bitonic_size);
     }
