@@ -1,7 +1,7 @@
 #include "sort.h"
 
 /**
- * swap - Swap two values.
+ * swap_array - Swap two values.
  *
  * @array: The array containing the values to swap.
  * @x: Index of the first item to swap.
@@ -13,7 +13,7 @@ void swap_array(int array[], int x, int y, int dir)
 	int diff = array[x] - array[y];
 	int temp;
 
-	if ((dir && diff > 0) || (!dir && diff < 0))
+	if ((dir == 1 && diff > 0) || (dir == 0 && diff < 0))
 	{
 		temp = array[x];
 		array[x] = array[y];
@@ -62,7 +62,7 @@ void bitonic_sort_recursive(int array[], int start, int count, int dir, int tota
 
 	half = count / 2;
 
-	if (dir)
+	if (dir == 1)
 		printf("Merging [%i/%i] (UP):\n", count, total_size);
 	else
 		printf("Merging [%i/%i] (DOWN):\n", count, total_size);
@@ -73,7 +73,7 @@ void bitonic_sort_recursive(int array[], int start, int count, int dir, int tota
 	bitonic_sort_recursive(array, start + half, half, 0, total_size);
 	bitonic_merge(array, start, count, dir);
 
-	if (!dir)
+	if (dir == 0)
 		printf("Result [%i/%i] (DOWN):\n", count, total_size);
 	else
 		printf("Result [%i/%i] (UP):\n", count, total_size);
