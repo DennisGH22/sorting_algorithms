@@ -65,34 +65,6 @@ int hoare_partition(int *array, int low, int high, size_t size)
 }
 
 /**
- * insertion_sort - Sorts an array..
- *
- * @array: The array to be sorted.
- * @low: The low index of the partition.
- * @high: The high index of the partition.
- * @size: The size of the array.
-*/
-void insertion_sort(int *array, int low, int high, size_t size)
-{
-    int i, j;
-
-    for (i = low + 1; i <= high; i++)
-    {
-        int key = array[i];
-        j = i - 1;
-
-        while (j >= low && array[j] > key)
-        {
-            array[j + 1] = array[j];
-            j--;
-        }
-
-        array[j + 1] = key;
-        print_array(array, size);
-    }
-}
-
-/**
  * quicksort_hoare_recursive - Recursive Quick Sort algorithm.
  *
  * @array: The array to be sorted.
@@ -106,12 +78,6 @@ void quicksort_hoare_recursive(int *array, int low, int high, size_t size)
 
 	if (low < high)
 	{
-		if (high - low + 1 <= 10)
-        {
-            insertion_sort(array, low, high, size);
-            return;
-        }
-
 		pivot_idx = hoare_partition(array, low, high, size);
 
 		quicksort_hoare_recursive(array, low, pivot_idx, size);
