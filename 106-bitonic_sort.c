@@ -7,12 +7,12 @@
  * @x: Index of the first item to swap.
  * @y: Index of the second item to swap.
 */
-void swap_array(int array[], int x, int y)
+/*void swap_array(int array[], int x, int y)
 {
     int temp = array[x];
     array[x] = array[y];
     array[y] = temp;
-}
+}/*
 
 /**
  * bitonic_merge - Merge two subarrays in bitonic order.
@@ -25,6 +25,7 @@ void swap_array(int array[], int x, int y)
 void bitonic_merge(int *array, size_t size, int dir, size_t bitonic_size)
 {
     size_t half, i;
+	int temp;
 
     if (bitonic_size > 1)
     {
@@ -41,7 +42,9 @@ void bitonic_merge(int *array, size_t size, int dir, size_t bitonic_size)
         {
             if ((array[i] > array[i + half]) == dir)
             {
-                swap_array(array, i, i + half);
+                temp = array[i];
+                array[i] = array[i + half];
+                array[i + half] = temp;
             }
         }
 
