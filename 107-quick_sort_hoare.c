@@ -28,6 +28,7 @@ int hoare_partition(int *array, int low, int high, size_t size)
 	int pivot = array[low];
 	int i = low - 1;
 	int j = high + 1;
+	int low_pivot, high_pivot;
 
 	while (1)
 	{
@@ -47,6 +48,20 @@ int hoare_partition(int *array, int low, int high, size_t size)
 		swap(&array[i], &array[j]);
 		print_array(array, size);
 	}
+
+	if (j == high && array[j] == pivot)
+		return high;
+
+	if (i == low && array[i] == pivot)
+		return low;
+
+	low_pivot = hoare_partition(array, low, j, size);
+	high_pivot = hoare_partition(array, i, high, size);
+
+	if (low_pivot < high_pivot)
+		return high_pivot;
+	else
+		return low_pivot;
 }
 
 /**
