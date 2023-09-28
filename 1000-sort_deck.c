@@ -4,6 +4,7 @@
  * card_comp - Get the integer value of a card.
  *
  * @card: Pointer to the card.
+ *
  * Return: Integer value of the card.
 */
 
