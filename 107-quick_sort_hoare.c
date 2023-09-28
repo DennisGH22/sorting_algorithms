@@ -60,8 +60,7 @@ int hoare_partition(int *array, int low, int high, int size)
  * @high: The high index of the partition.
  * @size: The size of the array.
 */
-void quicksort_hoare_recursive(
-	int *array, ssize_t low, ssize_t high, int size)
+void quicksort_hoare_recursive(int *array, ssize_t low, ssize_t high, int size)
 {
 	ssize_t pivot_index = 0;
 
