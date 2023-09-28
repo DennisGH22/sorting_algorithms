@@ -1,6 +1,4 @@
 #include "deck.h"
-#include <stdio.h>
-#include <string.h>
 
 /**
  * card_comp - Get the integer value of a card.
@@ -58,13 +56,15 @@ void swap_cards(deck_node_t *a, deck_node_t *b)
 */
 void sort_deck(deck_node_t **deck)
 {
+	deck_node_t *current, *next;
+
     if (!deck || !(*deck) || !((*deck)->next))
         return;
 
-    deck_node_t *current = (*deck)->next;
+    current = (*deck)->next;
     while (current)
     {
-        deck_node_t *next = current->next;
+        next = current->next;
         while (current->prev && get_card_value(current->prev->card) > get_card_value(current->card))
         {
             swap_cards(current->prev, current);
