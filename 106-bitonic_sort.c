@@ -30,13 +30,13 @@ void swap_array(int array[], int x, int y, int dir)
  */
 void bitonic_merge(int array[], int start, int count, int dir)
 {
-	int half;
+	int i, half;
 
     if (count <= 1)
         return;
 
     half = count / 2;
-    for (int i = start; i < start + half; i++)
+    for (i = start; i < start + half; i++)
         swap_array(array, i, i + half, dir);
 
     merge(array, start, half, dir);
@@ -72,7 +72,7 @@ void bitonic_sort_recursive(int array[], int start, int count, int dir, int tota
     bitonic_sort_recursive(array, start + half, half, 0, total_size);
     merge(array, start, count, dir);
 
-    if (!dir)
+    if (dir == NULL)
         printf("Result [%i/%i] (DOWN):\n", count, total_size);
     else
         printf("Result [%i/%i] (UP):\n", count, total_size);
@@ -90,7 +90,7 @@ void bitonic_sort(int *array, size_t size)
 {
     int dir = 1;
 
-    if (!array || size < 2)
+    if (array == NULL || size <= 1)
         return;
 
     bitonic_sort_recursive(array, 0, size, dir, size);
