@@ -1,12 +1,11 @@
 #include "sort.h"
-#include <stdio.h>
 
 /**
  * swap_array - Swap two values in an array.
  *
- * @arr: The array containing the values to swap.
- * @item1: Index of the first item to swap.
- * @item2: Index of the second item to swap.
+ * @array: The array containing the values to swap.
+ * @x: Index of the first item to swap.
+ * @y: Index of the second item to swap.
 */
 void swap_array(int array[], int x, int y)
 {
