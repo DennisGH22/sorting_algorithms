@@ -65,8 +65,6 @@ void quicksort_hoare_recursive(int *array, int low, int high, size_t size)
 	{
 		pivot_idx = hoare_partition(array, low, high, size);
 
-		print_array(array, size);
-
 		quicksort_hoare_recursive(array, low, pivot_idx - 1, size);
 		quicksort_hoare_recursive(array, pivot_idx + 1, high, size);
 	}
