@@ -29,6 +29,8 @@ int hoare_partition(int *array, int low, int high, size_t size)
 	int i = low - 1;
 	int j = high + 1;
 
+	print_array(array + low, high - low + 1);
+
 	while (1)
 	{
 		do
@@ -43,12 +45,12 @@ int hoare_partition(int *array, int low, int high, size_t size)
 
 		if (i >= j)
 		{
-			print_array(array, size);
+			print_array(array + low, high - low + 1);
 			return (j);
 		}
 
 		swap(&array[i], &array[j]);
-		print_array(array, size);
+		print_array(array + low, high - low + 1);
 	}
 }
 
