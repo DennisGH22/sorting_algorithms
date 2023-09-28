@@ -14,6 +14,31 @@ void swap(int *x, int *y)
 }
 
 /**
+ * median_of_three - Finds the median value among three integers.
+ *
+ * @array: Array of integers.
+ * @low: Index of the first integer.
+ * @high: Index of the third integer.
+ *
+ * Return: The median value.
+*/
+int median_of_three(int *array, int low, int high)
+{
+    int mid = (low + high) / 2;
+
+    if (array[low] > array[mid])
+        swap(&array[low], &array[mid]);
+
+    if (array[low] > array[high])
+        swap(&array[low], &array[high]);
+
+    if (array[mid] > array[high])
+        swap(&array[mid], &array[high]);
+
+    return (array[mid]);
+}
+
+/**
  * hoare_partition - Partitions an array using the Hoare scheme.
  *
  * @array: The array to be sorted.
@@ -25,7 +50,7 @@ void swap(int *x, int *y)
 */
 int hoare_partition(int *array, int low, int high, size_t size)
 {
-    int pivot = array[high];
+    int pivot = median_of_three(array, low, high);
     int i = low - 1;
     int j = high + 1;
 
@@ -41,11 +66,10 @@ int hoare_partition(int *array, int low, int high, size_t size)
             j--;
         } while (array[j] > pivot);
 
-        if (i < j)
-		{
-            swap(&array[i], &array[j]);
-            print_array(array, size);
-        }
+        if (i >= j)
+            return j;
+
+        swap(&array[i], &array[j]);
     }
 	return (j);
 }
