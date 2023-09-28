@@ -1,7 +1,7 @@
 #include "sort.h"
 
 /**
- * swap - Swap two values in dir or descending order.
+ * swap - Swap two values.
  *
  * @array: The array containing the values to swap.
  * @x: Index of the first item to swap.
@@ -12,7 +12,7 @@ void swap_array(int array[], int x, int y, int dir)
 {
     int temp;
 
-    if ((dir && array[x] > array[y]) || (!dir && array[x] < array[y]))
+    if ((dir ? array[x] > array[y] : array[x] < array[y]))
     {
         temp = array[x];
         array[x] = array[y];
