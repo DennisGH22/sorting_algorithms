@@ -10,14 +10,15 @@
 */
 void swap_array(int array[], int x, int y, int dir)
 {
+	int diff = array[x] - array[y];
     int temp;
 
-    if ((dir ? array[x] > array[y] : array[x] < array[y]))
-    {
-        temp = array[x];
-        array[x] = array[y];
-        array[y] = temp;
-    }
+    if ((dir && diff > 0) || (!dir && diff < 0))
+	{
+		temp = array[x];
+		array[x] = array[y];
+		array[y] = temp;
+	}
 }
 
 /**
