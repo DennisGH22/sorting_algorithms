@@ -65,7 +65,7 @@ void sort_deck(deck_node_t **deck)
     while (current)
     {
         next = current->next;
-        while (current->prev && get_card_value(current->prev->card) > get_card_value(current->card))
+        while (current->prev && card_comp(current->prev->card) > card_comp(current->card))
         {
             swap_cards(current->prev, current);
             if (!current->prev)
