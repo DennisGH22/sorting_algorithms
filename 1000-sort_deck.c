@@ -1,13 +1,12 @@
 #include "deck.h"
 
 /**
- * card_comp - Get the integer value of a card.
+ * card_comp - Comparison function for qsort.
  *
  * @card: Pointer to the card.
  *
  * Return: Integer value of the card.
 */
-
 int card_comp(const card_t *card)
 {
 	int value;
@@ -25,7 +24,7 @@ int card_comp(const card_t *card)
 	else
 		value = atoi(card->value);
 
-	return value + card->kind * 13;
+	return (value + card->kind * 13);
 }
 
 /**
@@ -34,7 +33,6 @@ int card_comp(const card_t *card)
  * @a: Pointer to the first card.
  * @b: Pointer to the second card.
 */
-
 void swap_cards(deck_node_t *a, deck_node_t *b)
 {
 	deck_node_t *prev_a = a->prev;
@@ -57,7 +55,6 @@ void swap_cards(deck_node_t *a, deck_node_t *b)
  *
  * @deck: Pointer to the head of the deck.
 */
-
 void sort_deck(deck_node_t **deck)
 {
 	deck_node_t *current, *next;
