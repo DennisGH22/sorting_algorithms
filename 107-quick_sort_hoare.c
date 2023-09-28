@@ -5,7 +5,7 @@
  *
  * @x: Pointer to the first element.
  * @y: Pointer to the second element.
-*/
+ */
 void swap(int *x, int *y)
 {
 	int temp = *x;
@@ -22,7 +22,7 @@ void swap(int *x, int *y)
  * @size: The size of the array.
  *
  * Return: Index of the pivot element.
-*/
+ */
 int hoare_partition(int *array, int low, int high, size_t size)
 {
 	int pivot = array[low];
@@ -71,7 +71,7 @@ int hoare_partition(int *array, int low, int high, size_t size)
  * @low: The low index of the partition.
  * @high: The high index of the partition.
  * @size: The size of the array.
-*/
+ */
 void quicksort_hoare_recursive(int *array, int low, int high, size_t size)
 {
 	int pivot_idx;
@@ -90,7 +90,7 @@ void quicksort_hoare_recursive(int *array, int low, int high, size_t size)
  *
  * @array: The array to be sorted.
  * @size: The size of the array.
-*/
+ */
 void quick_sort_hoare(int *array, size_t size)
 {
 	if (array == NULL || size <= 1)
