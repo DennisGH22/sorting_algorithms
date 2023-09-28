@@ -7,7 +7,6 @@
  *
  * Return: Integer value of the card.
 */
-
 int card_comp(const card_t *card)
 {
 	int value;
@@ -34,7 +33,6 @@ int card_comp(const card_t *card)
  * @a: Pointer to the first card.
  * @b: Pointer to the second card.
 */
-
 void swap_cards(deck_node_t *a, deck_node_t *b)
 {
 	deck_node_t *prev_a = a->prev;
@@ -42,9 +40,10 @@ void swap_cards(deck_node_t *a, deck_node_t *b)
 
 	if (prev_a)
 		prev_a->next = b;
-	b->prev = prev_a;
 
+	b->prev = prev_a;
 	a->next = next_b;
+
 	if (next_b)
 		next_b->prev = a;
 
@@ -57,7 +56,6 @@ void swap_cards(deck_node_t *a, deck_node_t *b)
  *
  * @deck: Pointer to the head of the deck.
 */
-
 void sort_deck(deck_node_t **deck)
 {
 	deck_node_t *current, *next;
@@ -66,9 +64,11 @@ void sort_deck(deck_node_t **deck)
 		return;
 
 	current = (*deck)->next;
+
 	while (current)
 	{
 		next = current->next;
+
 		while (
 			current->prev
 			&& card_comp(current->prev->card) > card_comp(current->card))
@@ -77,6 +77,7 @@ void sort_deck(deck_node_t **deck)
 			if (!current->prev)
 				*deck = current;
 		}
+
 		current = next;
 	}
 }
