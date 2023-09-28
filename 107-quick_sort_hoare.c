@@ -29,18 +29,16 @@ void swap_positions(int *array, ssize_t x, ssize_t y)
 int hoare_partition(int *array, int low, int high, int size)
 {
 	int left = low - 1,
-	right = high + 1,
-	pivot = array[high];
+		right = high + 1,
+		pivot = array[high];
 
 	while (1)
 	{
-		do
-		{
+		do {
 			left++;
 		} while (array[left] < pivot);
 
-		do
-		{
+		do {
 			right--;
 		} while (array[right] > pivot);
 
