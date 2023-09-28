@@ -40,8 +40,9 @@ void counting_sort_radix(int *array, size_t size, int exp);
 int get_max(int *array, size_t size);
 void radix_sort(int *array, size_t size);
 void bitonic_sort(int *array, size_t size);
-int hoare_partition(int *array, int low, int high, size_t size);
-void quicksort_hoare_recursive(int *array, int low, int high, size_t size);
+void swap_positions(int *array, ssize_t x, ssize_t y);
+int hoare_partition(int *array, int low, int high, int size);
+void quicksort_hoare_recursive(int *array, ssize_t first, ssize_t last, int size);
 void quick_sort_hoare(int *array, size_t size);
 
 #endif
